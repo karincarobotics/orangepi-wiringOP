@@ -52,6 +52,8 @@ if [ x$1 = "xclean" ]; then
   echo -n "DevLib:     "	; make clean
   cd ../gpio
   echo -n "gpio:       "	; make clean
+  cd ../gpio_daemon
+  echo -n "gpio_daemon:       "	; make clean
   cd ../examples
   echo -n "Examples:   "	; make clean
   cd Gertboard
@@ -77,6 +79,8 @@ if [ x$1 = "xuninstall" ]; then
   echo -n "DevLib:   " ; $sudo make uninstall
   cd ../gpio
   echo -n "gpio:     " ; $sudo make uninstall
+  cd ../gpio_daemon
+  echo -n "gpio_daemon:     " ; $sudo make uninstall
   exit
 fi
 
@@ -169,6 +173,9 @@ fi
   make -j5
   check_make_ok
   $sudo make install
+  check_make_ok
+  cd ../gpio_daemon
+  make -j5
   check_make_ok
 
 # echo
